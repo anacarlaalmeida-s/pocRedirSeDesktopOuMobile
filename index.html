@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecionamento App Bradesco Seguros</title>
+</head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-size: cover;
+    height: 100vh;
+    font-family: Arial, Tahoma, Helvetica, Verdana, sans-serif;
+  }
+
+  .loja {
+    text-align: center;
+  }
+
+  .conteudo {
+    text-align: left;
+    padding: 8px 24px;
+  }
+
+  .logo {
+    padding: 53px 0 78px;
+  }
+
+  .texto {
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .titulo {
+    color: #fcfcfc;
+    font-size: 21px;
+    opacity: 1;
+  }
+
+  .btn {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 80px 0 10px;
+    color: #8752a4;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .btn-cancelar {
+    font-weight: bold;
+    background-color: transparent;
+    color: #fcfcfc;
+    border: 1px solid #fcfcfc;
+    margin-top: 0;
+  }
+</style>
+
+<body>
+   <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      redirecionaPortalSeDesktop();
+    });
+  </script>
+
+  <div class="loja">
+
+    <div class="conteudo">
+      <h1 class="titulo">Não conseguimos concluir o seu redirecionamento</h1>
+      <p class="texto" style="margin-top: 32px">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nobis laboriosam explicabo! Eveniet cupiditate modi neque, deleniti, quae natus quasi culpa sapiente expedita alias, beatae itaque at veritatis earum magnam.
+      </p>
+      <a href="javascript:abrirLoja()" (click)="abrirLoja()" class="btn">Continuar para o app</a>
+      <a href="javascript:void(0)" onclick="navegar()" class="btn btn-cancelar">Cancelar</a>
+    </div>
+    <script type="text/javascript">
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop)
+      });
+      const url = params.redirect_uri;
+
+      function redirecionaPortalSeDesktop(){
+      var plataforma = navigator.userAgent.toLocaleLowerCase();
+      //TODO - Alterar a url pela do Portal quando disponibilizada
+      var link ='https://www.bradescoseguros.com.br/clientes/atendimento/whatsapp-bradesco-seguros?utm_source=google&utm_medium=cpc&utm_campaign=202301::a1:bradesco_seguros:branding:con:search:google:todos:atendimento_ao_cliente&utm_content=20230101:search:texto:texto::1stparty:todos:anuncio_2&gclid=Cj0KCQjwtO-kBhDIARIsAL6LordB1aqeJ1iDDFv-1B4spPRQrWCc-Yw5T3huLM7KWLPxPvlnFdfojnEaAgtaEALw_wcB';
+
+      if(!plataforma.includes('iphone') || !plataforma.includes('ipad') || !plataforma.includes('android')){
+        window.open(link);
+      }
+    }
+       
+      function abrirLoja() {
+        var plataforma = navigator.userAgent.toLocaleLowerCase();
+        var link ='';
+        if (plataforma.includes('iphone') || plataforma.includes('ipad')) {
+          link =
+            'itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403';
+        } else if (plataforma.includes('android')) {
+          link = 'market://details?id=br.com.bradseg.bscelular';
+        }
+        window.open(link);
+      }
+  
+      function navegar() {
+        window.location.href = url;
+      }
+    </script>  
+  </div>
+</body>
+</html>
