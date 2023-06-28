@@ -70,7 +70,12 @@
 <body>
    <script>
     window.addEventListener('DOMContentLoaded', function() {
-      redirecionaPortalSeDesktop();
+      var dispositivo = navigator.userAgent.toLocaleLowerCase();
+      var urlRedirecionamento ='https://www.bradescoseguros.com.br/clientes/atendimento/whatsapp-bradesco-seguros?utm_source=google&utm_medium=cpc&utm_campaign=202301::a1:bradesco_seguros:branding:con:search:google:todos:atendimento_ao_cliente&utm_content=20230101:search:texto:texto::1stparty:todos:anuncio_2&gclid=Cj0KCQjwtO-kBhDIARIsAL6LordB1aqeJ1iDDFv-1B4spPRQrWCc-Yw5T3huLM7KWLPxPvlnFdfojnEaAgtaEALw_wcB';
+
+      if(!dispositivo.includes('iphone', 'ipad', 'iphone') && !dispositivo.includes('ipad') && !dispositivo.includes('android')){
+        window.location.replace(urlRedirecionamento);          
+    }
     });
   </script>
 
@@ -88,17 +93,7 @@
       const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop)
       });
-      const url = params.redirect_uri;
-
-      function redirecionaPortalSeDesktop(){
-      var plataforma = navigator.userAgent.toLocaleLowerCase();
-      //TODO - Alterar a url pela do Portal quando disponibilizada
-      var link ='https://www.bradescoseguros.com.br/clientes/atendimento/whatsapp-bradesco-seguros?utm_source=google&utm_medium=cpc&utm_campaign=202301::a1:bradesco_seguros:branding:con:search:google:todos:atendimento_ao_cliente&utm_content=20230101:search:texto:texto::1stparty:todos:anuncio_2&gclid=Cj0KCQjwtO-kBhDIARIsAL6LordB1aqeJ1iDDFv-1B4spPRQrWCc-Yw5T3huLM7KWLPxPvlnFdfojnEaAgtaEALw_wcB';
-
-      if(!plataforma.includes('iphone') || !plataforma.includes('ipad') || !plataforma.includes('android')){
-        window.location.replace(link);      
-      }
-    }
+      const url = params.redirect_uri;    
        
       function abrirLoja() {
         var plataforma = navigator.userAgent.toLocaleLowerCase();
