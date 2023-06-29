@@ -81,10 +81,7 @@
         !dispositivo.includes('ipad') &&
         !dispositivo.includes('android')
       ) {
-        document.getElementById('loading').style.display = 'block';
-        setTimeout(function () {
-          window.location.replace(urlRedirecionamento);
-        }, 1000);
+        window.location.replace(urlRedirecionamento);
       }
     </script>
 
@@ -129,8 +126,6 @@
           class="btn btn-cancelar"
           >Cancelar</a
         >
-
-        <div id="loading" style="display: none">Carregando...</div>
       </div>
       <script type="text/javascript">
         const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -154,7 +149,7 @@
         //   window.location.href = url;
         // }
 
-        //apagar essa função e linha 158; confirmar com Rogério se função acima só funciona no caso Opin
+         //apagar essa função e linha 158; confirmar com Rogério se função acima só funciona no caso Opin 
         function navegar() {
           window.history.back();
         }
