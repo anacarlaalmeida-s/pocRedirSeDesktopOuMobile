@@ -67,7 +67,11 @@
       color: #fcfcfc;
       border: 1px solid #fcfcfc;
       margin-top: 0;
-    }  
+    }
+    
+    .hidden{
+      display: none;
+    }
   </style>
 
   <body>
@@ -81,8 +85,9 @@
         !dispositivo.includes('ipad') &&
         !dispositivo.includes('android')
       ) {
-        window.location.replace(urlRedirecionamento);
+        document.body.classList.add('hidden');
 
+        window.location.replace(urlRedirecionamento);
       }
     </script>
 
