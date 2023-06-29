@@ -110,7 +110,7 @@
       </div>
 
       <div class="conteudo">
-        <h1 class="titulo"> Lorem ipsum dolor sit amet</h1>
+        <h1 class="titulo">Lorem ipsum dolor sit amet</h1>
         <p class="texto" style="margin-top: 32px">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nobis
           laboriosam explicabo! Eveniet cupiditate modi neque, deleniti, quae
@@ -132,6 +132,8 @@
           get: (searchParams, prop) => searchParams.get(prop),
         });
         const url = params.redirect_uri;
+        console.log(`url ==> ${url}`);
+        console.log(`params ==> ${params}`);
 
         function abrirLoja() {
           var plataforma = navigator.userAgent.toLocaleLowerCase();
@@ -145,9 +147,14 @@
           window.open(link);
         }
 
+        // function navegar() {
+        //   window.location.href = url;
+        // }
+
         function navegar() {
-          window.location.href = url;
+          window.history.back();
         }
+        window.history.pushState({ page: 1 }, '', '');
       </script>
     </div>
   </body>
