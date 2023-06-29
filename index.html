@@ -68,6 +68,10 @@
       border: 1px solid #fcfcfc;
       margin-top: 0;
     }
+
+    .hidden {
+      visibility: hidden;
+    }
   </style>
 
   <body>
@@ -81,6 +85,7 @@
         !dispositivo.includes('ipad') &&
         !dispositivo.includes('android')
       ) {
+        document.body.classList.add('hidden');
         window.location.replace(urlRedirecionamento);
       }
     </script>
@@ -149,7 +154,7 @@
         //   window.location.href = url;
         // }
 
-         //apagar essa função e linha 158; confirmar com Rogério se função acima só funciona no caso Opin 
+        //apagar essa função e linha 158; confirmar com Rogério se função acima só funciona no caso Opin
         function navegar() {
           window.history.back();
         }
