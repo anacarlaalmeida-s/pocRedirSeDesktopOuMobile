@@ -120,15 +120,14 @@
           get: (searchParams, prop) => searchParams.get(prop),
         });
         const url = params.redirect_uri;
-        console.log(url)
+        console.log(url);
 
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
-        var urlFornecido = 'https://www.bradescoseguros.com.br/clientes';
-        var urlRecebido =
+        var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes';//substituir url que será fornecida
+        var urlDesktopRecebido =
           'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
-        var urlOpinPortalBsc =
-          'https://www.bradescoseguros.com.br/clientes/open-insurance';
-        var urlErroRedirRecebido = 'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
+        var urlErroRedirRecebido =
+          'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
         var templateTelaVermelha;
         templateTelaVermelha = document.getElementById('telaVermelha');
 
@@ -153,29 +152,28 @@
           window.location.replace(urlOpinPortalBsc);
         }
 
-        if (
-          !dispositivo.includes('iphone') &&
-          !dispositivo.includes('ipad') &&
-          !dispositivo.includes('android')
-        ) {
-          if (params.teste) {
-            if (params.teste == 'um' || params.teste == 'dois') {
-              window.location.replace(urlRecebido);
-            }else{
-              window.location.replace(urlErroRedirRecebido)
+        if (params.teste) {
+          if (params.teste == 'um' || params.teste == 'dois') {
+            if (
+              !dispositivo.includes('iphone') &&
+              !dispositivo.includes('ipad') &&
+              !dispositivo.includes('android')
+            ) {
+              window.location.replace(urlDesktopRecebido);
+            } else {
+              abrirLoja();
+              window.location.replace(urlErroRedirRecebido);
             }
-          } else {
-            window.location.replace(urlFornecido);
           }
         } else {
-          if (params.teste) {
-            if (params.teste == 'um' || params.teste == 'dois') {
-              abrirLoja();
-            }else{
-              window.location.replace(urlErroRedirRecebido)
-            }
-          }
           templateTelaVermelha.classList.remove('hidden');
+          if (
+            !dispositivo.includes('iphone') &&
+            !dispositivo.includes('ipad') &&
+            !dispositivo.includes('android')
+          ) {
+            window.location.replace(urlDesktopFornecido);
+          }
         }
       });
     </script>
