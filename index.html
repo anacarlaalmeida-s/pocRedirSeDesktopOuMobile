@@ -129,7 +129,7 @@
         var urlErroRedirRecebido =
           'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
         var body = document.querySelector('body');
-        
+
         function abrirLoja() {
           var plataforma = navigator.userAgent.toLocaleLowerCase();
           var link = '';
@@ -165,7 +165,7 @@
             }
           }
         } else {
-          body.classList.remove('nome-da-classe');
+          body.classList.remove('hidden');
 
           if (
             !dispositivo.includes('iphone') &&
