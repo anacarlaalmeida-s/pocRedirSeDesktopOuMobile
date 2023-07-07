@@ -74,8 +74,8 @@
     }
   </style>
 
-  <body>
-    <div id="telaVermelha" class="hidden">
+  <body class="hidden">
+    <div id="telaVermelha">
       <div class="logoTelaVermelha">
         <?xml version="1.0" ?><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -123,14 +123,13 @@
         console.log(url);
 
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
-        var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes';//substituir url que será fornecida
+        var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes'; //substituir url que será fornecida
         var urlDesktopRecebido =
           'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
         var urlErroRedirRecebido =
           'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
-        var templateTelaVermelha;
-        templateTelaVermelha = document.getElementById('telaVermelha');
-
+        var body = document.querySelector('body');
+        
         function abrirLoja() {
           var plataforma = navigator.userAgent.toLocaleLowerCase();
           var link = '';
@@ -166,7 +165,8 @@
             }
           }
         } else {
-          templateTelaVermelha.classList.remove('hidden');
+          body.classList.remove('nome-da-classe');
+
           if (
             !dispositivo.includes('iphone') &&
             !dispositivo.includes('ipad') &&
