@@ -117,73 +117,6 @@
   </style>
 
   <body>
-    <script type="text/javascript">
-      const params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-      const url = params.redirect_uri; 
-
-      var dispositivo = navigator.userAgent.toLocaleLowerCase();
-      var urlFornecido ="https://www.bradescoseguros.com.br/clientes"; 
-      var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
-      var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance";
-      var templateTelaVermelha = document.getElementById("telaVermelha");
-      var templateTelaOpinRecebido = document.getElementById("telaOpinRecebido");
-
-
-      function abrirLoja() {
-        var plataforma = navigator.userAgent.toLocaleLowerCase();
-        var link = "";
-
-        if (plataforma.includes("iphone") || plataforma.includes("ipad")) {
-          link =
-            "itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403";
-        } else if (plataforma.includes("android")) {
-          link = "market://details?id=br.com.bradseg.bscelular";
-        }
-        window.open(link);
-      } 
-
-      function navegar() {
-        window.location.href = url;
-      } 
-
-      function paginaOpinPortalBsc(){
-        window.location.replace(urlOpinPortalBsc);
-      }
-
-      if (
-        !dispositivo.includes("iphone") &&
-        !dispositivo.includes("ipad") &&
-        !dispositivo.includes("android")
-      ) {
-        if (params.teste) {
-          if (
-            params.teste == "um" ||
-            params.teste == "dois"
-          ) {
-            window.location.replace(urlRecebido);
-          }
-        } else {
-          window.location.replace(urlFornecido);
-        }
-      } else {
-        if (params.teste) {
-          if (
-            params.teste == "um" ||
-            params.teste == "dois"
-          ) {
-            abrirLoja();
-            templateTelaOpinRecebido.classList.remove("hidden");
-
-          }
-        }
-        templateTelaVermelha.classList.remove("hidden");
-      }
-
-
-    </script>
-
     <div id="telaVermelha" class="hidden">
       <div class="logoTelaVermelha">
         <?xml version="1.0" ?><svg
@@ -264,6 +197,73 @@
           >Voltar</a
         >      
       </div>
+
+      <script type="text/javascript">
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+          get: (searchParams, prop) => searchParams.get(prop),
+        });
+        const url = params.redirect_uri; 
+  
+        var dispositivo = navigator.userAgent.toLocaleLowerCase();
+        var urlFornecido ="https://www.bradescoseguros.com.br/clientes"; 
+        var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
+        var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance";
+        var templateTelaVermelha = document.getElementById("telaVermelha");
+        var templateTelaOpinRecebido = document.getElementById("telaOpinRecebido");
+  
+  
+        function abrirLoja() {
+          var plataforma = navigator.userAgent.toLocaleLowerCase();
+          var link = "";
+  
+          if (plataforma.includes("iphone") || plataforma.includes("ipad")) {
+            link =
+              "itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403";
+          } else if (plataforma.includes("android")) {
+            link = "market://details?id=br.com.bradseg.bscelular";
+          }
+          window.open(link);
+        } 
+  
+        function navegar() {
+          window.location.href = url;
+        } 
+  
+        function paginaOpinPortalBsc(){
+          window.location.replace(urlOpinPortalBsc);
+        }
+  
+        if (
+          !dispositivo.includes("iphone") &&
+          !dispositivo.includes("ipad") &&
+          !dispositivo.includes("android")
+        ) {
+          if (params.teste) {
+            if (
+              params.teste == "um" ||
+              params.teste == "dois"
+            ) {
+              window.location.replace(urlRecebido);
+            }
+          } else {
+            window.location.replace(urlFornecido);
+          }
+        } else {
+          if (params.teste) {
+            if (
+              params.teste == "um" ||
+              params.teste == "dois"
+            ) {
+              abrirLoja();
+              templateTelaOpinRecebido.classList.remove("hidden");
+  
+            }
+          }
+          templateTelaVermelha.classList.remove("hidden");
+        }
+  
+  
+      </script>
     </div>
   </body>
 </html>
