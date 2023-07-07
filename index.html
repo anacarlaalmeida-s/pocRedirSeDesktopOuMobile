@@ -123,10 +123,9 @@
             } else {
               abrirLoja();
             }
-            window.location.replace(urlErroRedirRecebido);
-
+            //window.location.replace(urlErroRedirRecebido);//cenário erro, onde colocar?
           }
-        } else {
+        } else if(!params.teste) {
           if (
             !dispositivo.includes('iphone') &&
             !dispositivo.includes('ipad') &&
