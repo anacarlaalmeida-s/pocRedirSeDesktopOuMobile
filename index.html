@@ -124,8 +124,9 @@
       const url = params.redirect_uri; 
 
       var dispositivo = navigator.userAgent.toLocaleLowerCase();
-      var urlFornecido ="https://www.bradescoseguros.com.br/clientes/open-insurance"; 
+      var urlFornecido ="https://www.bradescoseguros.com.br/clientes"; 
       var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
+      var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance"
 
       function abrirLoja() {
         var plataforma = navigator.userAgent.toLocaleLowerCase();
@@ -144,8 +145,8 @@
         window.location.href = url;
       } 
 
-      function paginaOpinBsc(){
-        window.location.replace(urlFornecido);
+      function paginaOpinPortalBsc(){
+        window.location.replace(urlOpinPortalBsc);
       }
 
       if (
@@ -256,7 +257,7 @@
           natus quasi culpa sapiente expedita alias, beatae itaque at veritatis
           earum magnam.
         </p>
-        <a href="javascript:abrirLoja()" (click)="paginaOpinBsc()" class="btnTelaOpinRecebido"
+        <a href="javascript:abrirLoja()" (click)="paginaOpinPortalBsc()" class="btnTelaOpinRecebido"
           >Voltar</a
         >      
       </div>
