@@ -250,8 +250,8 @@
         !dispositivo.includes('android')
       ) {
         if (params.teste) {
-          templateTelaVermelha.classList.add('hidden');
           if (params.teste == 'um' || params.teste == 'dois') {
+            templateTelaVermelha.classList.add('hidden');
             window.location.replace(urlRecebido);
           }
         } else {
@@ -259,8 +259,8 @@
         }
       } else {
         if (params.teste) {
-          templateTelaVermelha.classList.add('hidden');
           if (params.teste == 'um' || params.teste == 'dois') {
+            templateTelaVermelha.classList.add('hidden');
             abrirLoja();
             templateTelaOpinRecebido.classList.remove('hidden');
           }
