@@ -127,14 +127,14 @@
 
           }
         } else {
-          body.classList.remove('hidden');
-
           if (
             !dispositivo.includes('iphone') &&
             !dispositivo.includes('ipad') &&
             !dispositivo.includes('android')
           ) {
             window.location.replace(urlDesktopFornecido);
+          }else{
+            body.classList.remove('hidden');
           }
         }
       });
