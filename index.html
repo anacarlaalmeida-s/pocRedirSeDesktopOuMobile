@@ -153,10 +153,10 @@
         !dispositivo.includes("ipad") &&
         !dispositivo.includes("android")
       ) {
-        if (params.appbs) {
+        if (params.teste) {
           if (
-            params.appbs == "jornadarecebimento" ||
-            params.appbs == "home-openinsurance"
+            params.teste == "um" ||
+            params.teste == "dois"
           ) {
             window.location.replace(urlRecebido);
           }
@@ -164,10 +164,10 @@
           window.location.replace(urlFornecido);
         }
       } else {
-        if (params.appbs) {
+        if (params.teste) {
           if (
-            params.appbs == "jornadarecebimento" ||
-            params.appbs == "home-openinsurance"
+            params.teste == "um" ||
+            params.teste == "dois"
           ) {
             abrirLoja();
             document
