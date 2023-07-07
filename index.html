@@ -127,7 +127,7 @@
           'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
         var urlOpinPortalBsc =
           'https://www.bradescoseguros.com.br/clientes/open-insurance';
-        var urlErroRecebido = '';
+        var urlErroRedirRecebido = 'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
         var templateTelaVermelha;
         templateTelaVermelha = document.getElementById('telaVermelha');
 
@@ -160,6 +160,8 @@
           if (params.teste) {
             if (params.teste == 'um' || params.teste == 'dois') {
               window.location.replace(urlRecebido);
+            }else{
+              window.location.replace(urlErroRedirRecebido)
             }
           } else {
             window.location.replace(urlFornecido);
@@ -168,6 +170,8 @@
           if (params.teste) {
             if (params.teste == 'um' || params.teste == 'dois') {
               abrirLoja();
+            }else{
+              window.location.replace(urlErroRedirRecebido)
             }
           }
           templateTelaVermelha.classList.remove('hidden');
