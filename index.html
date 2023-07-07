@@ -14,41 +14,41 @@
     }
 
     body {
-      background: linear-gradient(210deg, #c9092e 33%, #6f77ca 104%);
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100vh;
       font-family: Arial, Tahoma, Helvetica, Verdana, sans-serif;
     }
 
-    .loja {
+    #telaVermelha {
+      background: linear-gradient(210deg, #c9092e 33%, #6f77ca 104%);
+      background-repeat: no-repeat;
+      background-size: cover;
       text-align: center;
+      height: 100vh;
     }
 
-    .conteudo {
+    .conteudoTelaVermelha {
       text-align: left;
       padding: 8px 24px;
     }
 
-    .logo {
+    .logoTelaVermelha {
       padding: 53px 0 78px;
       width: 50px;
       margin: 0 auto;
     }
 
-    .texto {
+    .textoTelaVermelha {
       color: #ffffff;
       font-size: 13px;
       line-height: 20px;
     }
 
-    .titulo {
+    .tituloTelaVermelha {
       color: #fcfcfc;
       font-size: 21px;
       opacity: 1;
     }
 
-    .btn {
+    .btnTelaVermelha {
       display: block;
       text-align: center;
       font-weight: bold;
@@ -61,38 +61,127 @@
       text-decoration: none;
     }
 
-    .btn-cancelar {
+    .btn-cancelarTelaVermelha {
       font-weight: bold;
       background-color: transparent;
       color: #fcfcfc;
       border: 1px solid #fcfcfc;
       margin-top: 0;
     }
-    
-    .hidden{
+
+    #telaOpinRecebido {
+      background: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      height: 100vh;
+    }
+
+    .conteudoTelaOpinRecebido {
+      text-align: center;
+      padding: 8px 24px;
+    }
+
+    .logoTelaOpinRecebido {
+      padding: 53px 0 78px;
+      width: 80px;
+      margin: 0 auto;
+    }
+
+    .textoTelaOpinRecebido {
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .tituloTelaOpinRecebido {
+      font-size: 18px;
+      opacity: 1;
+    }
+
+    .btnTelaOpinRecebido {
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      padding: 15px;
+      background-color: #451f59;
+      border-radius: 8px;
+      margin: 80px 0 10px;
+      color: #ffffff;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .hidden {
       display: none;
     }
   </style>
 
   <body>
     <script type="text/javascript">
+      const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+      });
+      const url = params.redirect_uri; 
+
       var dispositivo = navigator.userAgent.toLocaleLowerCase();
-      var urlRedirecionamento =
-        'https://www.bradescoseguros.com.br/';
+      var urlFornecido ="https://www.bradescoseguros.com.br/clientes/open-insurance"; 
+      var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
+
+      function abrirLoja() {
+        var plataforma = navigator.userAgent.toLocaleLowerCase();
+        var link = "";
+
+        if (plataforma.includes("iphone") || plataforma.includes("ipad")) {
+          link =
+            "itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403";
+        } else if (plataforma.includes("android")) {
+          link = "market://details?id=br.com.bradseg.bscelular";
+        }
+        window.open(link);
+      } 
+
+      function navegar() {
+        window.location.href = url;
+      } 
+
+      function paginaOpinBsc(){
+        window.location.replace(urlFornecido);
+      }
 
       if (
-        !dispositivo.includes('iphone') &&
-        !dispositivo.includes('ipad') &&
-        !dispositivo.includes('android')
+        !dispositivo.includes("iphone") &&
+        !dispositivo.includes("ipad") &&
+        !dispositivo.includes("android")
       ) {
-        document.body.classList.add('hidden');
-
-        window.location.replace(urlRedirecionamento);
+        if (params.appbs) {
+          if (
+            params.appbs == "jornadarecebimento" ||
+            params.appbs == "home-openinsurance"
+          ) {
+            window.location.replace(urlRecebido);
+          }
+        } else {
+          window.location.replace(urlFornecido);
+        }
+      } else {
+        if (params.appbs) {
+          if (
+            params.appbs == "jornadarecebimento" ||
+            params.appbs == "home-openinsurance"
+          ) {
+            abrirLoja();
+            document
+              .getElementById("telaOpinRecebido")
+              .classList.remove("hidden");
+          }
+        }
+        document.getElementById("telaVermelha").classList.remove("hidden");
       }
+
     </script>
 
-    <div class="loja">
-      <div class="logo">
+    <div id="telaVermelha" class="hidden">
+      <div class="logoTelaVermelha">
         <?xml version="1.0" ?><svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -115,52 +204,62 @@
         </svg>
       </div>
 
-      <div class="conteudo">
-        <h1 class="titulo">Lorem ipsum dolor sit amet</h1>
-        <p class="texto" style="margin-top: 32px">
+      <div class="conteudoTelaVermelha">
+        <h1 class="tituloTelaVermelha">Lorem ipsum dolor sit amet</h1>
+        <p class="textoTelaVermelha" style="margin-top: 32px">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nobis
           laboriosam explicabo! Eveniet cupiditate modi neque, deleniti, quae
           natus quasi culpa sapiente expedita alias, beatae itaque at veritatis
           earum magnam.
         </p>
-        <a href="javascript:abrirLoja()" (click)="abrirLoja()" class="btn"
+        <a href="javascript:abrirLoja()" (click)="abrirLoja()" class="btnTelaVermelha"
           >Loja/ App</a
         >
         <a
           href="javascript:void(0)"
           onclick="navegar()"
-          class="btn btn-cancelar"
+          class="btnTelaVermelha btn-cancelarTelaVermelha"
           >Cancelar</a
         >
       </div>
-      <script type="text/javascript">
-        const params = new Proxy(new URLSearchParams(window.location.search), {
-          get: (searchParams, prop) => searchParams.get(prop),
-        });
-        const url = params.redirect_uri;
+    </div>
 
-        function abrirLoja() {
-          var plataforma = navigator.userAgent.toLocaleLowerCase();
-          var link = '';
-          if (plataforma.includes('iphone') || plataforma.includes('ipad')) {
-            link =
-              'itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403';
-          } else if (plataforma.includes('android')) {
-            link = 'market://details?id=br.com.bradseg.bscelular';
-          }
-          window.open(link);
-        }
+    <div id="telaOpinRecebido" class="hidden" >      
+      <div class="logoTelaOpinRecebido">
+        <?xml version="1.0" ?><svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          viewBox="0 0 512 512"
+          style="enable-background: new 0 0 512 512"
+          fill="#00000"
+          xml:space="preserve"
+        >
+          <g
+            id="_x32_6_x2C__headphones_x2C__music_headphones_x2C__audio_headphones_x2C__music_headphone_x2C__electronics_x2C__audio"
+          >
+            <g>
+              <path
+                d="M256,1C115.049,1,1,115.069,1,256v115c0,22.056,17.944,40,40,40v10c0,24.146,17.205,44.348,40,48.994V471c0,22.056,17.944,40,40,40h30c22.056,0,40-17.944,40-40V321c0-22.056-17.944-40-40-40h-30c-22.056,0-40,17.944-40,40v1.006    c-7.386,1.505-14.183,4.644-20,9.021V256c0-50.344,19.179-96.293,50.612-130.926c17.179,13.236,40.774,13.685,58.476,1.849    c51.62-34.515,119.998-34.653,171.827,0.002c17.723,11.843,41.31,11.369,58.473-1.851C431.821,159.707,451,205.655,451,256v75.027    c-5.817-4.377-12.614-7.516-20-9.021V321c0-22.056-17.944-40-40-40h-30c-22.056,0-40,17.944-40,40v150c0,22.056,17.944,40,40,40    h30c22.056,0,40-17.944,40-40v-1.006c22.795-4.646,40-24.847,40-48.994v-10c22.056,0,40-17.944,40-40V256    C511,115.049,396.931,1,256,1z M101,321c0-11.028,8.972-20,20-20h30c11.028,0,20,8.972,20,20v150c0,11.028-8.972,20-20,20h-30    c-11.028,0-20-8.972-20-20V321z M81,342.72v106.56c-11.639-4.128-20-15.243-20-28.28v-50C61,357.964,69.361,346.848,81,342.72z     M353.028,110.298c-58.564-39.16-135.715-39.01-194.056-0.001c-9.863,6.594-22.801,6.939-32.953,0.476    c74.099-66.39,185.896-66.361,259.963,0.001C375.816,117.247,362.874,116.876,353.028,110.298z M411,471c0,11.028-8.972,20-20,20    h-30c-11.028,0-20-8.972-20-20V321c0-11.028,8.972-20,20-20h30c11.028,0,20,8.972,20,20V471z M451,421    c0,13.036-8.361,24.152-20,28.28V342.72c11.639,4.128,20,15.243,20,28.28V421z"
+              />
+            </g>
+          </g>
+          <g id="Layer_1" />
+        </svg>
+      </div>
 
-        // function navegar() {
-        //   window.location.href = url;
-        // }
-
-        //apagar essa função e linha 158; confirmar com Rogério se função acima só funciona no caso Opin
-        function navegar() {
-          window.history.back();
-        }
-        window.history.pushState({ page: 1 }, '', '');
-      </script>
+      <div class="conteudoTelaOpinRecebido">
+        <h1 class="tituloTelaOpinRecebido">Ops, algo deu errado!</h1>
+        <p class="textoTelaOpinRecebido" style="margin-top: 32px">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nobis
+          laboriosam explicabo! Eveniet cupiditate modi neque, deleniti, quae
+          natus quasi culpa sapiente expedita alias, beatae itaque at veritatis
+          earum magnam.
+        </p>
+        <a href="javascript:abrirLoja()" (click)="paginaOpinBsc()" class="btnTelaOpinRecebido"
+          >Voltar</a
+        >      
+      </div>
     </div>
   </body>
 </html>
