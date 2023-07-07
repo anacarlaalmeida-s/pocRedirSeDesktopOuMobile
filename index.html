@@ -107,7 +107,7 @@
           natus quasi culpa sapiente expedita alias, beatae itaque at veritatis
           earum magnam.
         </p>
-        <a (click)="abrirLoja()" class="btnTelaVermelha">Loja/ App</a>
+        <a onclick="abrirLoja()" class="btnTelaVermelha">Loja/ App</a>
         <a onclick="navegar()" class="btnTelaVermelha btn-cancelarTelaVermelha"
           >Cancelar</a
         >
@@ -120,6 +120,7 @@
           get: (searchParams, prop) => searchParams.get(prop),
         });
         const url = params.redirect_uri;
+        console.log(url)
 
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
         var urlFornecido = 'https://www.bradescoseguros.com.br/clientes';
