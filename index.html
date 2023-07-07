@@ -150,13 +150,11 @@
           earum magnam.
         </p>
         <a
-          href="javascript:abrirLoja()"
           (click)="abrirLoja()"
           class="btnTelaVermelha"
           >Loja/ App</a
         >
         <a
-          href="javascript:void(0)"
           onclick="navegar()"
           class="btnTelaVermelha btn-cancelarTelaVermelha"
           >Cancelar</a
@@ -197,7 +195,6 @@
           earum magnam.
         </p>
         <a
-          href="javascript:abrirLoja()"
           (click)="paginaOpinPortalBsc()"
           class="btnTelaOpinRecebido"
           >Voltar</a
@@ -253,6 +250,7 @@
         !dispositivo.includes('android')
       ) {
         if (params.teste) {
+          templateTelaVermelha.classList.add('hidden');
           if (params.teste == 'um' || params.teste == 'dois') {
             window.location.replace(urlRecebido);
           }
