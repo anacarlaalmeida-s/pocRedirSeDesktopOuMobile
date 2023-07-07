@@ -87,7 +87,7 @@
         var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes'; //substituir url que será fornecida
         var urlDesktopRecebido =
           'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
-        var urlErroRedirRecebido =
+        var furlErroRedirRecebido =
           'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
         var body = document.querySelector('body');
 
@@ -101,7 +101,8 @@
           } else if (plataforma.includes('android')) {
             link = 'market://details?id=br.com.bradseg.bscelular';
           }
-          window.open(link);
+          // window.open(link);
+          window.location.replace(link)
         }
 
         function navegar() {
