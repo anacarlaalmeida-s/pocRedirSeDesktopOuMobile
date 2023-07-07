@@ -149,7 +149,10 @@
           natus quasi culpa sapiente expedita alias, beatae itaque at veritatis
           earum magnam.
         </p>
-        <a href="javascript:abrirLoja()" (click)="abrirLoja()" class="btnTelaVermelha"
+        <a
+          href="javascript:abrirLoja()"
+          (click)="abrirLoja()"
+          class="btnTelaVermelha"
           >Loja/ App</a
         >
         <a
@@ -161,7 +164,7 @@
       </div>
     </div>
 
-    <div id="telaOpinRecebido" class="hidden" >      
+    <div id="telaOpinRecebido" class="hidden">
       <div class="logoTelaOpinRecebido">
         <?xml version="1.0" ?><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -193,79 +196,78 @@
           natus quasi culpa sapiente expedita alias, beatae itaque at veritatis
           earum magnam.
         </p>
-        <a href="javascript:abrirLoja()" (click)="paginaOpinPortalBsc()" class="btnTelaOpinRecebido"
+        <a
+          href="javascript:abrirLoja()"
+          (click)="paginaOpinPortalBsc()"
+          class="btnTelaOpinRecebido"
           >Voltar</a
-        >      
+        >
       </div>
 
       <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+          const params = new Proxy(
+            new URLSearchParams(window.location.search),
+            {
+              get: (searchParams, prop) => searchParams.get(prop),
+            }
+          );
+          const url = params.redirect_uri;
 
-document.addEventListener("DOMContentLoaded", function() {
-  // Seu código JavaScript aqui
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-          get: (searchParams, prop) => searchParams.get(prop),
-        });
-        const url = params.redirect_uri; 
-  
-        var dispositivo = navigator.userAgent.toLocaleLowerCase();
-        var urlFornecido ="https://www.bradescoseguros.com.br/clientes"; 
-        var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
-        var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance";  
-  
-        function abrirLoja() {
-          var plataforma = navigator.userAgent.toLocaleLowerCase();
-          var link = "";
-  
-          if (plataforma.includes("iphone") || plataforma.includes("ipad")) {
-            link =
-              "itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403";
-          } else if (plataforma.includes("android")) {
-            link = "market://details?id=br.com.bradseg.bscelular";
+          var dispositivo = navigator.userAgent.toLocaleLowerCase();
+          var urlFornecido = 'https://www.bradescoseguros.com.br/clientes';
+          var urlRecebido =
+            'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
+          var urlOpinPortalBsc =
+            'https://www.bradescoseguros.com.br/clientes/open-insurance';
+
+          function abrirLoja() {
+            var plataforma = navigator.userAgent.toLocaleLowerCase();
+            var link = '';
+
+            if (plataforma.includes('iphone') || plataforma.includes('ipad')) {
+              link =
+                'itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403';
+            } else if (plataforma.includes('android')) {
+              link = 'market://details?id=br.com.bradseg.bscelular';
+            }
+            window.open(link);
           }
-          window.open(link);
-        } 
-  
-        function navegar() {
-          window.location.href = url;
-        } 
-  
-        function paginaOpinPortalBsc(){
-          window.location.replace(urlOpinPortalBsc);
-        }
-  
-        if (
-          !dispositivo.includes("iphone") &&
-          !dispositivo.includes("ipad") &&
-          !dispositivo.includes("android")
-        ) {
-          if (params.teste) {
-            if (
-              params.teste == "um" ||
-              params.teste == "dois"
-            ) {
-              window.location.replace(urlRecebido);
+
+          function navegar() {
+            window.location.href = url;
+          }
+
+          function paginaOpinPortalBsc() {
+            window.location.replace(urlOpinPortalBsc);
+          }
+
+          if (
+            !dispositivo.includes('iphone') &&
+            !dispositivo.includes('ipad') &&
+            !dispositivo.includes('android')
+          ) {
+            if (params.teste) {
+              if (params.teste == 'um' || params.teste == 'dois') {
+                window.location.replace(urlRecebido);
+              }
+            } else {
+              window.location.replace(urlFornecido);
             }
           } else {
-            window.location.replace(urlFornecido);
-          }
-        } else {
-          if (params.teste) {
-            if (
-              params.teste == "um" ||
-              params.teste == "dois"
-            ) {
-              abrirLoja();
-              templateTelaOpinRecebido.classList.remove("hidden");
-  
+            if (params.teste) {
+              if (params.teste == 'um' || params.teste == 'dois') {
+                abrirLoja();
+                templateTelaOpinRecebido.classList.remove('hidden');
+              }
             }
+            templateTelaVermelha.classList.remove('hidden');
           }
-          templateTelaVermelha.classList.remove("hidden");
-        }
-  
-        var templateTelaVermelha = document.getElementById("telaVermelha");
-        var templateTelaOpinRecebido = document.getElementById("telaOpinRecebido");
- 
-});  
+
+          var templateTelaVermelha = document.getElementById('telaVermelha');
+          var templateTelaOpinRecebido =
+            document.getElementById('telaOpinRecebido');
+        });
       </script>
     </div>
   </body>
