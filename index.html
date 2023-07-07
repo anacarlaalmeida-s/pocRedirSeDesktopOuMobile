@@ -126,7 +126,10 @@
       var dispositivo = navigator.userAgent.toLocaleLowerCase();
       var urlFornecido ="https://www.bradescoseguros.com.br/clientes"; 
       var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
-      var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance"
+      var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance";
+      var templateTelaVermelha = document.getElementById("telaVermelha");
+      var templateTelaOpinRecebido = document.getElementById("telaOpinRecebido");
+
 
       function abrirLoja() {
         var plataforma = navigator.userAgent.toLocaleLowerCase();
@@ -171,13 +174,13 @@
             params.teste == "dois"
           ) {
             abrirLoja();
-            document
-              .getElementById("telaOpinRecebido")
-              .className.remove("hidden");
+            templateTelaOpinRecebido.classList.remove("hidden");
+
           }
         }
-        document.getElementById("telaVermelha").className.remove("hidden");
+        templateTelaVermelha.classList.remove("hidden");
       }
+
 
     </script>
 
