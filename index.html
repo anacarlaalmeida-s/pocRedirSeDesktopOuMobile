@@ -199,7 +199,10 @@
       </div>
 
       <script type="text/javascript">
-        const params = new Proxy(new URLSearchParams(window.location.search), {
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Seu código JavaScript aqui
+  const params = new Proxy(new URLSearchParams(window.location.search), {
           get: (searchParams, prop) => searchParams.get(prop),
         });
         const url = params.redirect_uri; 
@@ -207,10 +210,7 @@
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
         var urlFornecido ="https://www.bradescoseguros.com.br/clientes"; 
         var urlRecebido ="https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros"; 
-        var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance";
-        var templateTelaVermelha = document.getElementById("telaVermelha");
-        var templateTelaOpinRecebido = document.getElementById("telaOpinRecebido");
-  
+        var urlOpinPortalBsc= "https://www.bradescoseguros.com.br/clientes/open-insurance";  
   
         function abrirLoja() {
           var plataforma = navigator.userAgent.toLocaleLowerCase();
@@ -262,7 +262,10 @@
           templateTelaVermelha.classList.remove("hidden");
         }
   
-  
+        var templateTelaVermelha = document.getElementById("telaVermelha");
+        var templateTelaOpinRecebido = document.getElementById("telaOpinRecebido");
+ 
+});  
       </script>
     </div>
   </body>
