@@ -76,6 +76,21 @@
 
   <body class="hidden">
     <script type="text/javascript">
+      function abrirLoja() {
+        var plataforma = navigator.userAgent.toLocaleLowerCase();
+        var link = '';
+
+        if (plataforma.includes('iphone') || plataforma.includes('ipad')) {
+          link =
+            'itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403';
+        } else if (plataforma.includes('android')) {
+          link = 'market://details?id=br.com.bradseg.bscelular';
+        }
+        window.open(link);
+      }
+      function navegar() {
+        window.location.href = url;
+      }
       document.addEventListener('DOMContentLoaded', function () {
         const params = new Proxy(new URLSearchParams(window.location.search), {
           get: (searchParams, prop) => searchParams.get(prop),
@@ -91,27 +106,6 @@
           'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
         var body = document.querySelector('body');
 
-        function abrirLoja() {
-          var plataforma = navigator.userAgent.toLocaleLowerCase();
-          var link = '';
-
-          if (plataforma.includes('iphone') || plataforma.includes('ipad')) {
-            link =
-              'itms-apps://apps.apple.com/br/app/bradesco-seguros/id1256508403';
-          } else if (plataforma.includes('android')) {
-            link = 'market://details?id=br.com.bradseg.bscelular';
-          }
-          window.open(link);   
-        }
-        //TODO Funcoes na telaVermelha nao funcionam
-        function navegar() {
-          window.location.href = url;
-        }
-
-        function paginaOpinPortalBsc() {
-          window.location.replace(urlOpinPortalBsc);
-        }
-
         if (params.teste) {
           if (params.teste == 'um' || params.teste == 'dois') {
             if (
@@ -125,14 +119,14 @@
             }
             //window.location.replace(urlErroRedirRecebido);//cenário erro, onde colocar?
           }
-        } else if(!params.teste) {
+        } else if (!params.teste) {
           if (
             !dispositivo.includes('iphone') &&
             !dispositivo.includes('ipad') &&
             !dispositivo.includes('android')
           ) {
             window.location.replace(urlDesktopFornecido);
-          }else{
+          } else {
             body.classList.remove('hidden');
           }
         }
@@ -175,6 +169,6 @@
           >Cancelar</a
         >
       </div>
-    </div>   
+    </div>
   </body>
 </html>
