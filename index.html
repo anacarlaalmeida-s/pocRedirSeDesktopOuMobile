@@ -102,22 +102,26 @@
         var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes'; //substituir url que será fornecida
         var urlDesktopRecebido =
           'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
-        var furlErroRedirRecebido =
+        var urlErroRedirRecebido =
           'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
         var body = document.querySelector('body');
 
         if (params.teste) {
           if (params.teste == 'um' || params.teste == 'dois') {
-            if (
-              !dispositivo.includes('iphone') &&
-              !dispositivo.includes('ipad') &&
-              !dispositivo.includes('android')
-            ) {
-              window.location.replace(urlDesktopRecebido);
-            } else {
-              abrirLoja();
+            try {
+              if (
+                !dispositivo.includes('iphone') &&
+                !dispositivo.includes('ipad') &&
+                !dispositivo.includes('android')
+              ) {
+                window.location.replace(urlDesktopRecebido);
+              } else {
+                abrirLoja();
+              }
+            } catch (error) {
+              console.error(error);
+              window.location.replace(urlErroRedirRecebido);
             }
-            //window.location.replace(urlErroRedirRecebido);//cenário erro, onde colocar?
           }
         } else if (!params.teste) {
           if (
