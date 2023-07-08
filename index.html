@@ -87,11 +87,10 @@
           link = 'market://details?id=br.com.bradseg.bscelular';
         }
         window.location.replace(link);
-
-        // window.open(link);
       }
       function navegar() {
         window.location.href = url;
+        console.log(url)
       }
       document.addEventListener('DOMContentLoaded', function () {
         const params = new Proxy(new URLSearchParams(window.location.search), {
