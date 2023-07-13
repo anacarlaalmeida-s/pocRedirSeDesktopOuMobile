@@ -88,43 +88,23 @@
         }
         window.location.replace(link);
       }
+
       function navegar() {
         window.location.href = url;
         console.log(url)
       }
+
       document.addEventListener('DOMContentLoaded', function () {
         const params = new Proxy(new URLSearchParams(window.location.search), {
           get: (searchParams, prop) => searchParams.get(prop),
         });
+
         const url = params.redirect_uri;
-        console.log(url);
 
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
-        var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes'; //substituir url que será fornecida
-        var urlDesktopRecebido =
-          'https://www.bradescoseguros.com.br/clientes/aplicativo-bradesco-seguros';
-        var urlErroRedirRecebido =
-          'https://www.bradescoseguros.com.br/clientes/open-insurance?teste=erro';
+        var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes/open-insurance/compartilhamento-de-dados'; 
         var body = document.querySelector('body');
-
-        if (params.teste) {
-          if (params.teste == 'um' || params.teste == 'dois') {
-            try {
-              if (
-                !dispositivo.includes('iphone') &&
-                !dispositivo.includes('ipad') &&
-                !dispositivo.includes('android')
-              ) {
-                window.location.replace(urlDesktopRecebido);
-              } else {
-                abrirLoja();
-              }
-            } catch (error) {
-              console.error(error);
-              window.location.replace(urlErroRedirRecebido);
-            }
-          }
-        } else{
+    
           if (
             !dispositivo.includes('iphone') &&
             !dispositivo.includes('ipad') &&
@@ -134,8 +114,7 @@
           } else {
             body.classList.remove('hidden');
           }
-        }
-      });
+        })     
     </script>
     <div id="telaVermelha">
       <div class="logoTelaVermelha">
