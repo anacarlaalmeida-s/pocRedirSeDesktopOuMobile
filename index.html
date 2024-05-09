@@ -113,7 +113,7 @@
         var body = document.querySelector('body');
 
   if(params.appteste){
-    if(params.appteste != 'teste'){
+    if(params.appteste == 'teste'){
       try{
         if(!dispositivo.includes('iphone') &&
         !dispositivo.includes('ipad') &&
@@ -124,7 +124,6 @@
         }
       }catch(error){
         window.location.replace(urlErroRecebido)
-        console.error(error)
       }
     }
   }else {
