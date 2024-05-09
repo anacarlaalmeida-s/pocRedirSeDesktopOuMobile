@@ -132,7 +132,7 @@
             !dispositivo.includes('ipad') &&
             !dispositivo.includes('android')
           ) {
-            window.location.replace(loginRedirect);
+            window.location.replace(redirecionaGoogleComParametros());
           } else {
             body.classList.remove('hidden');
           }
