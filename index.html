@@ -94,7 +94,7 @@
       }
 
       function redirecionaGoogleComParametros(){
-        var parametros = encodeURI('?'+ location.href.split('?')[1]);
+        var parametros = encodeURI(location.href.split('?')[1]);
         var urlGoogle = 'https://www.google.com.br/search'
         var loginRedirect = urlGoogle + parametros
         return loginRedirect;        
