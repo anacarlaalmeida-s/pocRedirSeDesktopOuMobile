@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecionamento App Bradesco Seguros</title>
+    <title>Redirecionamento</title>
   </head>
 
   <style>
@@ -109,7 +109,7 @@
 
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
         var urlRecebido = 'https://www.youtube.com.br';
-        var urlErroRecebido = 'https://www.bradescoseguros.com.br';
+        var urlErroRecebido = 'https://playground.com';
         var body = document.querySelector('body');
 
         if(params.appteste){
@@ -124,6 +124,7 @@
             }
             }catch(error){
             window.location.replace(urlErroRecebido)
+             console.error(error)
             }
           }
         }else {
