@@ -90,8 +90,14 @@
       }
 
       function navegar() {
-        // window.location.href = url;
-        window.history.back();
+        window.location.href = url;       
+      }
+
+      function redirecionaGoogleComParametros(){
+        var parametros = encodeURI(location.href.split('?')[1]);
+        var urlGoogle = 'https://www.google.com.br'
+        var loginRedirect = urlGoogle + parametros
+        return loginRedirect;        
       }
 
       document.addEventListener('DOMContentLoaded', function () {
@@ -102,19 +108,36 @@
         const url = params.redirect_uri;
 
         var dispositivo = navigator.userAgent.toLocaleLowerCase();
-        var urlDesktopFornecido = 'https://www.bradescoseguros.com.br/clientes/open-insurance/compartilhamento-de-dados'; 
+        var urlRecebido = 'https://www.youtube.com.br';
+        var urlErroRecebido = 'https://www.github.com';
         var body = document.querySelector('body');
-    
+
+        if(params.appteste){
+          if(params.appteste == 'teste'){
+           try{
+            if(!dispositivo.includes('iphone') &&
+            !dispositivo.includes('ipad') &&
+            !dispositivo.includes('android')){
+              window.location.replace(urlRecebido)
+            }else{
+              abrirLoja()
+            }
+            }catch(error){
+            window.location.replace(urlErroRecebido)
+            }
+          }
+        }else {
           if (
             !dispositivo.includes('iphone') &&
             !dispositivo.includes('ipad') &&
             !dispositivo.includes('android')
           ) {
-            window.location.replace(urlDesktopFornecido);
+            window.location.replace(loginRedirect);
           } else {
             body.classList.remove('hidden');
           }
-        })     
+        }          
+     })     
     </script>
     <div id="telaVermelha">
       <div class="logoTelaVermelha">
