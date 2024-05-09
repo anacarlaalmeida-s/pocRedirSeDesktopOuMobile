@@ -124,7 +124,10 @@
         }
       }catch(error){
         window.location.replace(urlErroRecebido)
+        console.error(error)
       }
+    } else {
+      window.location.replace(urlErroRecebido)
     }
   }else {
     if (
@@ -136,7 +139,7 @@
     } else {
       body.classList.remove('hidden');
     }
-  }        
+  }      
      })     
     </script>
     <div id="telaVermelha">
