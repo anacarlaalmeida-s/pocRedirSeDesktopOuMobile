@@ -112,33 +112,32 @@
         var urlErroRecebido = 'https://playground.com';
         var body = document.querySelector('body');
 
-        if(params.appteste){
-          if(params.appteste == 'teste' ||
-            params.appteste == 'teste2'){
-           try{
-            if(!dispositivo.includes('iphone') &&
-            !dispositivo.includes('ipad') &&
-            !dispositivo.includes('android')){
-              window.location.replace(urlRecebido)
-            }else{
-              abrirLoja()
-            }
-            }catch(error){
-            window.location.replace(urlErroRecebido)
-             console.error(error)
-            }
-          }
-        }else {
-          if (
-            !dispositivo.includes('iphone') &&
-            !dispositivo.includes('ipad') &&
-            !dispositivo.includes('android')
-          ) {
-            window.location.replace(redirecionaGoogleComParametros());
-          } else {
-            body.classList.remove('hidden');
-          }
-        }          
+  if(params.appteste){
+    if(params.appteste != 'teste'){
+      try{
+        if(!dispositivo.includes('iphone') &&
+        !dispositivo.includes('ipad') &&
+        !dispositivo.includes('android')){
+          window.location.replace(urlRecebido)
+        }else{
+          abrirLoja()
+        }
+      }catch(error){
+        window.location.replace(urlErroRecebido)
+        console.error(error)
+      }
+    }
+  }else {
+    if (
+      !dispositivo.includes('iphone') &&
+      !dispositivo.includes('ipad') &&
+      !dispositivo.includes('android')
+    ) {
+      window.location.replace(redirecionaGoogleComParametros());
+    } else {
+      body.classList.remove('hidden');
+    }
+  }        
      })     
     </script>
     <div id="telaVermelha">
